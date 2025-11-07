@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conoce a Ela - Mi Adorable Perrita</title>
+    <!-- Incluyendo Tailwind CSS para un diseño moderno y responsive --><script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Colores pastel base que ya usábamos:
+                        'pastel-blue': '#ADD8E6',     /* Azul claro */
+                        'pastel-pink': '#FFB6C1',     /* Rosa claro para texto principal */
+                        'light-yellow': '#FFFACD',    /* Amarillo muy claro para descripciones */
+                        'text-dark': '#333333',
+                        
+                        // Nuevos colores pastel para los botones:
+                        'btn-1-pink': '#FFC0CB',   /* Rosa Cereza Suave */
+                        'btn-2-mint': '#B2FAD2',   /* Verde Menta */
+                        'btn-3-lavender': '#E6E6FA', /* Lavanda Suave */
+                        'btn-4-peach': '#FFDAB9',  /* Durazno Melocotón */
+                        'btn-5-sky': '#87CEFA',    /* Azul Cielo */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Definición de la fuente 'Inter' */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        /* ESTILOS APLICADOS PARA EL FONDO DEL BOSQUE */
+        body {
+            /* Usamos una imagen de bosque de fondo */
+            background-image: url('https://images.unsplash.com/photo-1542485559-001d24c3e8a4?fit=crop&q=80&w=1920&h=1080');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed; /* Mantiene el fondo fijo al hacer scroll */
+        }
+        
+        .description-content {
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            padding: 0 16px; 
+        }
+        .description-content.open {
+            max-height: 500px; 
+            opacity: 1;
+            padding: 16px;
+        }
+        
+        /* Estilo para los botones con iconos */
+        .description-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333333; /* Forzamos color de texto oscuro para mayor legibilidad en fondos claros */
+        }
+
+        /* Estilos específicos para los botones que usan los nuevos colores y garantizan legibilidad */
+        #button1, #button2, #button3, #button4, #button5 {
+            color: #333333; /* Texto oscuro por defecto */
+        }
+        
+        /* Ajuste el color del texto a blanco solo si el fondo del botón es oscuro (e.g., el de fotos) */
+        #button5 {
+            color: white; /* El azul cielo es un poco más fuerte, dejamos el texto blanco. */
+        }
+
+        .description-button:hover {
+            opacity: 0.8; /* Efecto hover suave */
+        }
+
+        .description-button span {
+            margin-right: 8px; /* Espacio entre el icono y el texto */
+            font-size: 1.25rem; /* Tamaño del icono */
+        }
+    </style>
+</head>
+<!-- Eliminamos la clase de color y dejamos que el CSS personalizado maneje el fondo de imagen -->
+<body class="p-4 sm:p-8 flex justify-center items-center min-h-screen font-sans text-text-dark">
+    
+    <!-- El contenedor principal tiene una ligera transparencia (bg-white/95) para que se vea el fondo -->
+    <div class="container bg-white/95 w-full max-w-2xl rounded-xl shadow-2xl p-6 sm:p-10 text-center backdrop-blur-sm">
+        
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-pastel-pink mb-6 border-b-2 border-btn-1-pink pb-3">
+            ¡Hola! Conoce a la Maravillosa Ela 🐾
+        </h1>
+
+        <div class="mb-6 flex justify-center">
+            <!-- IMAGEN DE ELA ACTUALIZADA CON LA RUTA DEL ARCHIVO SUBIDO -->
+            <img 
+                src="WhatsApp Image 2025-11-01 at 8.37.06 PM.jpeg" 
+                alt="Ela, la perrita dulce y juiciosa con disfraz de Blancanieves" 
+                class="ela-image w-full max-w-sm h-auto object-cover rounded-lg shadow-lg aspect-square"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x400/FFB6C1/FFFFFF?text=Imagen+de+Ela'"
+            >
+        </div>
+        
+        <!-- Breve descripción visible siempre --><p class="mb-8 text-lg text-gray-700 leading-relaxed">
+            Conoce a Ela, nuestra perrita criolla de 3 años, llena de dulzura y alegría. Siempre nos regala momentos especiales con su carácter cariñoso.
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <!-- Botón 1: Sobre su Personalidad (Pink) -->
+            <button id="button1" class="description-button bg-btn-1-pink text-text-dark font-semibold py-3 px-4 rounded-lg shadow-md hover:bg-btn-1-pink/80 active:scale-95 transition duration-200 ease-in-out">
+                <span>💖</span> Su Personalidad Encantadora
+            </button>
+            <div id="description1" class="description-content bg-light-yellow/50 border-l-4 border-pastel-pink rounded-lg text-left mt-2 sm:col-span-2">
+                <p>Ela es el epítome de la <strong>dulzura</strong> y la <strong>ternura</strong>. Cada día nos regala momentos de alegría con su carácter cariñoso. Su lealtad es inquebrantable y su compañía es un bálsamo para el alma.</p>
+            </div>
+
+            <!-- Botón 2: Su Carácter y Comportamiento (Mint) -->
+            <button id="button2" class="description-button bg-btn-2-mint text-text-dark font-semibold py-3 px-4 rounded-lg shadow-md hover:bg-btn-2-mint/80 active:scale-95 transition duration-200 ease-in-out">
+                <span>🐶</span> Carácter y Comportamiento
+            </button>
+            <div id="description2" class="description-content bg-light-yellow/50 border-l-4 border-pastel-pink rounded-lg text-left mt-2 sm:col-span-2">
+                <p>Es una perrita increíblemente <strong>juiciosa</strong>, siempre atenta y con ganas de complacer. Se porta muy bien tanto en casa como en sus paseos, demostrando una obediencia admirable.</p>
+            </div>
+
+            <!-- Botón 3: Detalles y Curiosidades (Lavender) -->
+            <button id="button3" class="description-button bg-btn-3-lavender text-text-dark font-semibold py-3 px-4 rounded-lg shadow-md hover:bg-btn-3-lavender/80 active:scale-95 transition duration-200 ease-in-out">
+                <span>✨</span> Detalles y Curiosidades
+            </button>
+            <div id="description3" class="description-content bg-light-yellow/50 border-l-4 border-pastel-pink rounded-lg text-left mt-2 sm:col-span-2">
+                <p>A pesar de su tamaño pequeño, tiene un corazón enorme y está llena de vida. Es una hermosa <strong>raza criolla</strong>, lo que la hace única y especial, con una mezcla de rasgos encantadores.</p>
+            </div>
+
+            <!-- Botón 4: Qué le encanta hacer (Peach) -->
+            <button id="button4" class="description-button bg-btn-4-peach text-text-dark font-semibold py-3 px-4 rounded-lg shadow-md hover:bg-btn-4-peach/80 active:scale-95 transition duration-200 ease-in-out">
+                <span>🎾</span> Sus Actividades Favoritas
+            </button>
+            <div id="description4" class="description-content bg-light-yellow/50 border-l-4 border-pastel-pink rounded-lg text-left mt-2 sm:col-span-2">
+                <p>Le encanta jugar en el parque, explorar nuevos olores y, sobre todo, recibir mimos y caricias. Es inteligente, curiosa y aprende con facilidad, disfrutando cada nueva experiencia.</p>
+            </div>
+            
+            <!-- Botón 5: Fotos (Sky Blue) -->
+            <button id="button5" class="description-button bg-btn-5-sky text-white font-semibold py-3 px-4 rounded-lg shadow-md hover:bg-btn-5-sky/80 active:scale-95 transition duration-200 ease-in-out">
+                <span>📸</span> Fotos de Ela
+            </button>
+            <div id="description5" class="description-content bg-light-yellow/50 border-l-4 border-pastel-pink rounded-lg text-left mt-2 sm:col-span-2">
+                <p class="font-bold text-lg mb-2">¡Próximamente, la galería de fotos!</p>
+                <p>Aquí podrás ver y subir todas las fotos divertidas y adorables de Ela. Vuelve pronto para ver la galería completa.</p>
+            </div>
+
+        </div>
+        
+        <!-- Botón de WhatsApp --><a href="https://wa.me/573002312155" target="_blank" class="whatsapp-button inline-flex items-center justify-center bg-[#25D366] text-white font-bold py-3 px-8 rounded-full shadow-xl hover:bg-[#1DA851] mt-8 transition duration-200 ease-in-out transform hover:-translate-y-1">
+            <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12.04 2c-5.52 0-9.98 4.48-9.98 10s4.46 10 9.98 10c5.52 0 9.98-4.48 9.98-10S17.56 2 12.04 2zm4.84 14.8c-.33.31-.76.47-1.2.47-.44 0-.87-.16-1.2-.47l-2.4-2.8c-.4-.46-1.02-.69-1.64-.69-.62 0-1.24.23-1.64.69l-2.4 2.8c-.33.31-.76.47-1.2.47-.44 0-.87-.16-1.2-.47l-1.35-1.57c-.6-.7-.6-1.64 0-2.34l.33-.39c.6-.7 1.64-.7 2.34 0l1.45 1.7c.4.46 1.02.69 1.64.69.62 0 1.24-.23 1.64-.69l2.4-2.8c.4-.46 1.02-.69 1.64-.69.62 0 1.24-.23 1.64.69l1.35 1.57c.6.7.6 1.64 0 2.34l-.33.39zM12.04 4c4.42 0 8 3.58 8 8s-3.58 8-8 8-8-3.58-8-8 3.58-8 8-8zm4.84 12.8c.17 0 .33-.06.46-.17.26-.24.26-.64 0-.88L15.3 14.2c-.26-.24-.68-.24-.94 0l-2.4 2.8c-.26.24-.26.64 0 .88l1.35 1.57c.13.11.29.17.46.17z"/>
+            </svg>
+            ¡Contáctanos! (300 231 2155)
+        </a>
+
+        <footer>
+            <p class="mt-10 text-xs text-gray-400">Página diseñada con amor para Ela, la mejor amiga.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttons = [
+                { button: document.getElementById('button1'), description: document.getElementById('description1'), text: '💖 Su Personalidad Encantadora' },
+                { button: document.getElementById('button2'), description: document.getElementById('description2'), text: '🐶 Carácter y Comportamiento' },
+                { button: document.getElementById('button3'), description: document.getElementById('description3'), text: '✨ Detalles y Curiosidades' },
+                { button: document.getElementById('button4'), description: document.getElementById('description4'), text: '🎾 Sus Actividades Favoritas' },
+                { button: document.getElementById('button5'), description: document.getElementById('description5'), text: '📸 Fotos de Ela' } // El texto original ya incluye el icono 📸
+            ];
+
+            buttons.forEach(item => {
+                let isOpen = false;
+                item.button.addEventListener('click', () => {
+                    isOpen = !isOpen;
+                    if (isOpen) {
+                        // Cierra las otras descripciones si están abiertas
+                        buttons.forEach(otherItem => {
+                            // Cierre de otros botones
+                            const otherButtonContent = otherItem.button.innerHTML;
+                            if (otherItem !== item && otherItem.description.classList.contains('open')) {
+                                otherItem.description.classList.remove('open');
+                                
+                                // Restablece el texto del botón. Si empieza con 'Ocultar', usa el texto original.
+                                if (otherButtonContent.startsWith('Ocultar ')) {
+                                    // Restauramos el contenido HTML original (icono + texto)
+                                    // Como no tenemos el texto original limpio en el array, lo reconstruimos
+                                    
+                                    // Solo hay que quitar el prefijo 'Ocultar '
+                                    otherItem.button.innerHTML = otherButtonContent.replace('Ocultar ', '');
+                                }
+                                otherItem.isOpen = false;
+                            }
+                        });
+
+                        // Abre el botón actual
+                        item.description.classList.add('open');
+                        
+                        // Busca el texto original (incluyendo el icono) dentro del HTML del botón
+                        const originalContent = item.button.innerHTML;
+                        
+                        // Añade 'Ocultar ' al texto
+                        item.button.innerHTML = `Ocultar ${originalContent}`;
+                    } else {
+                        // Cierra el botón actual
+                        item.description.classList.remove('open');
+                        
+                        // Quita el prefijo 'Ocultar ' del texto del botón
+                        const currentContent = item.button.innerHTML;
+                        if (currentContent.startsWith('Ocultar ')) {
+                            item.button.innerHTML = currentContent.replace('Ocultar ', '');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
